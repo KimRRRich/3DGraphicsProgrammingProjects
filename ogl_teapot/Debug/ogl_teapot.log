@@ -1,0 +1,4 @@
+﻿  ogl_teapot.cpp
+D:\StudyMaterials\大三上\三维图形程序设计\Projects\三维图形程序设计Projects\ogl_teapot\ogl_teapot.cpp(9,1): warning C4005: “_CRT_SECURE_NO_WARNINGS”: 宏重定义
+D:\StudyMaterials\大三上\三维图形程序设计\Projects\三维图形程序设计Projects\ogl_teapot\ogl_teapot.cpp : message : 参见“_CRT_SECURE_NO_WARNINGS”的前一个定义
+  ogl_teapot.vcxproj -> D:\StudyMaterials\大三上\三维图形程序设计\Projects\三维图形程序设计Projects\Debug\ogl_teapot.exe

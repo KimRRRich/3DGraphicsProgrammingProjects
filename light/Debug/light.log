@@ -1,0 +1,3 @@
+﻿  light.cpp
+D:\StudyMaterials\大三上\三维图形程序设计\Projects\三维图形程序设计Projects\light\light.cpp(64,31): warning C4838: 从“GLdouble”转换到“GLfloat”需要收缩转换
+  light.vcxproj -> D:\StudyMaterials\大三上\三维图形程序设计\Projects\三维图形程序设计Projects\Debug\light.exe
