@@ -15,7 +15,7 @@
 #include "textfile.h"
 
 
-GLuint v, f, f2, p;
+GLuint v, f, f2, p,lightposition, color1, color2,color3,color4;
 float lpos[4] = { 1,0.5,1,0 };
 
 void changeSize(int w, int h) {
@@ -79,13 +79,20 @@ void setShaders() {
 	fs = textFileRead("toon.frag");
 	fs2 = textFileRead("toon2.frag");
 
+	
+
 	const char* ff = fs;
 	const char* ff2 = fs2;
 	const char* vv = vs;
 
+	
+
 	glShaderSource(v, 1, &vv, NULL);
 	glShaderSource(f, 1, &ff, NULL);
 	glShaderSource(f2, 1, &ff2, NULL);
+	
+
+	//v.setUniform("Material.Kd", 0.9f, 0.5f, 0.3f);
 
 	free(vs); free(fs);
 
@@ -98,8 +105,21 @@ void setShaders() {
 	glAttachShader(p, f2);
 	glAttachShader(p, v);
 
+
+
 	glLinkProgram(p);
 	glUseProgram(p);
+
+	lightposition = glGetUniformLocation(p, "lightposition");
+	color1 = glGetUniformLocation(p, "color1");
+	color2 = glGetUniformLocation(p, "color2");
+	color3 = glGetUniformLocation(p, "color3");
+	color4 = glGetUniformLocation(p, "color3");
+	glUniform3f(lightposition, lpos[0], lpos[1], lpos[2]);
+	glUniform4f(color1, 0.1, 0.8, 0.8,1.0);
+	glUniform4f(color2, 0.5, 0.5, 0.4,1.0);
+	glUniform4f(color3, 0.25, 0.25, 0.2, 1.0);
+	glUniform4f(color4, 0.1, 0.1, 0.1, 1.0);
 }
 
 
@@ -109,7 +129,8 @@ int main(int argc, char** argv) {
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(640, 640);
 	glutCreateWindow("MM 2004-05");
-
+	const GLubyte* OpenGLVersion = glGetString(GL_VERSION); //返回当前OpenGL实现的版本号  
+	printf("OpenGL实现的版本号：%s\n", OpenGLVersion);
 	glutDisplayFunc(renderScene);
 	glutIdleFunc(renderScene);
 	glutReshapeFunc(changeSize);
